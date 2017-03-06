@@ -1,9 +1,6 @@
 package com.grazerss.activities;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
+import android.app.*;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,7 +48,6 @@ import com.grazerss.jobs.ModelUpdateResult;
 import com.grazerss.jobs.SynchronizeModelSucceeded;
 import com.grazerss.storage.SdCardStorageAdapter;
 import com.grazerss.util.FlurryUtil;
-import com.grazerss.util.GoogleAdsUtil;
 import com.grazerss.util.SDK11Helper;
 import com.grazerss.util.Timing;
 import com.grazerss.util.U;
@@ -106,8 +102,6 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
   private ProgressBar         progressBar;
   private TextView            progressDescription;
   private LinearLayout        progressContainer;
-
-  private GoogleAdsUtil       googleAdsUtil;
 
   protected void activateProgressIndicator()
   {
@@ -533,7 +527,7 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
   {
     super.onConfigurationChanged(newConfig);
     // AdUtil.onConfigurationChanged(this, newConfig);
-    googleAdsUtil.showAds(this);
+
     refreshUI();
   }
 
@@ -565,8 +559,6 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
     setTheme(getEntryManager().getCurrentThemeResourceId());
     requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-    googleAdsUtil = new GoogleAdsUtil(entryManager);
 
     /*
      * WindowManager.LayoutParams lp = new WindowManager.LayoutParams(); lp.copyFrom(getWindow().getAttributes()); lp.format = PixelFormat.RGBA_8888;
@@ -833,7 +825,6 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
 
     if (false)
     {
-      googleAdsUtil.hideAds(this);
 
       UIHelper.pauseWebViews(this);
     }
@@ -959,8 +950,6 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
       });
     }
 
-    googleAdsUtil.showAds(this);
-
     if (getIntent().hasExtra("showProgress") && getIntent().getBooleanExtra("showProgress", false))
     {
       showProgressBar();
@@ -1037,8 +1026,6 @@ public abstract class AbstractNewsRobListActivity extends ListActivity implement
 
       checkIfSDCardAccessible();
       // AdUtil.publishAd(this);
-
-      googleAdsUtil.showAds(this);
 
     }
 

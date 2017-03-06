@@ -67,7 +67,6 @@ import com.grazerss.R;
 import com.grazerss.ReadState;
 import com.grazerss.jobs.ModelUpdateResult;
 import com.grazerss.util.FlurryUtil;
-import com.grazerss.util.GoogleAdsUtil;
 import com.grazerss.util.MessageHelper;
 import com.grazerss.util.SDK11Helper;
 import com.grazerss.util.SDKVersionUtil;
@@ -338,7 +337,6 @@ public class ShowArticleActivity extends Activity implements IEntryModelUpdateLi
 
   private ScaleAnimation        showAnimation;
   private MotionEvent           lastDownEvent;
-  private GoogleAdsUtil         googleAdsUtil;
   private boolean               debug;
 
   private int                   latestOrientation;
@@ -894,7 +892,7 @@ public class ShowArticleActivity extends Activity implements IEntryModelUpdateLi
   {
     super.onConfigurationChanged(newConfig);
     // AdUtil.onConfigurationChanged(this, newConfig);
-    googleAdsUtil.showAds(this);
+
     if (viewMode != VIEW_MODE_ALTERNATE)
     {
       viewFeedContent();
@@ -956,8 +954,6 @@ public class ShowArticleActivity extends Activity implements IEntryModelUpdateLi
     }
 
     setContentView(com.grazerss.R.layout.show_article);
-
-    googleAdsUtil = new GoogleAdsUtil(getEntryManager());
 
     uiHelper = new UIHelper(getEntryManager());
 
@@ -1280,7 +1276,7 @@ public class ShowArticleActivity extends Activity implements IEntryModelUpdateLi
 
     if (false)
     {
-      googleAdsUtil.hideAds(this);
+
     }
 
     if (getSelectedEntry() != null)
@@ -1394,7 +1390,7 @@ public class ShowArticleActivity extends Activity implements IEntryModelUpdateLi
 
       if (false)
       {
-        googleAdsUtil.showAds(this);
+
       }
       leavingThisActivity = false;
       getEntryManager().addListener(this);

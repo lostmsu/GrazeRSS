@@ -56,9 +56,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.ads.AdSenseSpec;
-import com.google.ads.AdSenseSpec.AdType;
-import com.google.ads.AdSenseSpec.ExpandDirection;
 import com.grazerss.BackendProvider.AuthToken;
 import com.grazerss.BackendProvider.AuthToken.AuthType;
 import com.grazerss.BackendProvider.StateChange;
@@ -300,8 +297,6 @@ public class EntryManager implements SharedPreferences.OnSharedPreferenceChangeL
     return secretKey;
   }
 
-  private AdSenseSpec                                 adSenseSpec;
-
   private Integer                                     articleCountCache;
   private boolean                                     cancelRequested;
 
@@ -386,8 +381,6 @@ public class EntryManager implements SharedPreferences.OnSharedPreferenceChangeL
 
     newsRobNotificationManager = new NewsRobNotificationManager(ctx);
     addListener(newsRobNotificationManager);
-    setUpAdSenseSpec();
-
   }
 
   public void acceptLicense()
@@ -1043,11 +1036,6 @@ public class EntryManager implements SharedPreferences.OnSharedPreferenceChangeL
     }
 
     return getSharedPreferences().getString(SETTINGS_UI_ACTION_BAR_LOCATION, ACTION_BAR_TOP);
-  }
-
-  public AdSenseSpec getAdSenseSpec()
-  {
-    return adSenseSpec;
   }
 
   public Cursor getAllFeedsCursor()
@@ -2495,17 +2483,6 @@ public class EntryManager implements SharedPreferences.OnSharedPreferenceChangeL
     {
       storePassword(null);
     }
-  }
-
-  private void setUpAdSenseSpec()
-  {
-    // ("ca-mb-app-pub-2595622705667578") ca-mb-app-test expandedvideotest
-    // android news technology tech google reader rss atom mobile
-    adSenseSpec = new AdSenseSpec("ca-mb-app-pub-2595622705667578").setCompanyName("Mariano Kamp").setAppName("NewsRob")
-        .setChannel("7593515733").setAdType(AdType.TEXT_IMAGE).setExpandDirection(ExpandDirection.TOP)
-        .setKeywords("android news technology tech finance vip gossip photography friends google reader newsreader rss atom mobile offline")
-        .setAdTestEnabled(false);
-
   }
 
   public boolean shouldActionBarLocationOnlyAllowGone()
