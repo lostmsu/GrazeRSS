@@ -11,6 +11,8 @@ site/.DS_Store
 sd.img.*
 sd.img*
 
+.idea/
+
 /app/.settings/org.eclipse.jdt.core.prefs
 *.apk
 /app/src/com/grazerss/feedly/FeedlyKey.java

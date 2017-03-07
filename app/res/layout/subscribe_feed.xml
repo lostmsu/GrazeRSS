@@ -88,7 +88,6 @@
                 android:id="@+id/empty"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
-                android:layout_below="@id/query"
                 android:gravity="center"
                 android:text="Enter search criteria above and hit 'Search'."
                 android:textSize="18sp"
@@ -100,7 +99,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_below="@id/query"
                 android:visibility="gone" />
 
 
